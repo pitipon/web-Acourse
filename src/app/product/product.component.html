@@ -1,0 +1,15 @@
+<div class="row">
+<input [(ngModel)]="keywordFilter" type="text" class="form-control" placeholder="Search course">
+<span *ngIf="keywordFilter"> Searching: {{keywordFilter}}</span>
+<br>
+
+<div *ngFor="let item of product | productFilter:keywordFilter" class="col-md-6">
+  <div class="card card-block">
+    <h3 class="card-title">{{item.c_title | uppercase}}</h3>
+    <p class="card-text">{{item.c_detail}}</p>
+    <button (click)="onShowDetail(item)" class="btn btn-primary">Enroll</button>
+  </div>
+
+</div>
+
+</div>

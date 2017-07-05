@@ -1,0 +1,32 @@
+<!-- Articles -->
+<div class="row">
+
+  <div class="col-md-8">
+
+  
+
+    <hr>
+    <button (click)="toggleImage()" class="btn btn-outline-success" > {{isToggle ? 'Hide img' : 'Show img'}} </button>
+    <hr>
+    <article class="col-xs-12" *ngFor="let item of news | async">
+      <h2>{{item.title}}}</h2>
+      <img *ngIf="isToggle" [src]="item.urlToImage" class="img-fluid m-x-auto d-block">
+      <p>{{item.description}}</p>
+      <p><a [href]="item.url" target="_blank" class="btn btn-outline-success">Read More</a></p>
+      <p class="pull-right"><span class="tag tag-default">{{item.publishedAt | date: 'dd/MM/yyyy'}}</span></p>
+      <ul class="list-inline">
+        <li class="list-inline-item">{{item.author}}</li>
+
+      </ul>
+    </article>
+
+  </div>
+
+  <div class="col-md-4">
+    <app-login></app-login>
+    <app-slide></app-slide>
+  </div>
+
+
+
+</div>

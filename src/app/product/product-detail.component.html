@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>Course: {{productName}}</h3>
+    <ul class="list-group">
+      <li *ngFor="let item of productDetail" class="list-group-item"> 
+        {{item.ch_title}}
+        <br>
+        <small>
+            <a href="https://www.youtube.com/watch?v={{item.ch_url}}" target="blank">Watch on youtube</a>
+            {{item.ch_dateadd}} {{item.ch_timetotal}}
+        </small>
+        <span class="pull-xs-right tag tag-default">
+          <app-product-rate [view]="item.ch_view" (itemClick)="onClickView($event, itemFromChild)"></app-product-rate> 
+        </span>
+      </li>
+    </ul>
+    <br>
+    <button class="btn btn-default" (click)="goBack()">back</button>
+  </div>
+</div>

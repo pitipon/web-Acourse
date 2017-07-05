@@ -1,0 +1,38 @@
+<!-- Articles -->
+<div class="row">
+
+  <div class="col-md-8">
+
+
+     <!--search box for searching news-->
+     <label for="search">Search News</label>
+     <input type="text" name="" value="" #search (keyup)="onSearch(search.value)">
+
+     <!--loading image for waiting news loading-->
+     <img *ngIf="isLoading" src="./assets/images/loading.gif" class="m-x-auto d-block">
+
+     <!--news: show topic/detail/pics and error msg from api-->
+    <article class="col-xs-12" *ngFor="let item of news">
+      <h2>{{item.title}}</h2>
+      <img [src]="item.urlToImage" class="img-fluid m-x-auto d-block">
+      <p>{{item.description}}</p>
+      <p><a [href]="item.url" target="_blank" class="btn btn-outline-success">Read More</a></p>
+      <p class="pull-right"><span class="tag tag-default">{{item.publishedAt | date: 'dd/MM/yyyy'}}</span></p>
+      <ul class="list-inline">
+        <li class="list-inline-item">{{item.author}}</li>
+
+      </ul>
+    </article>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+
+
+  </div>
+
+  <div class="col-md-4">
+    <app-login></app-login>
+    <app-slide></app-slide>
+  </div>
+
+
+
+</div>
